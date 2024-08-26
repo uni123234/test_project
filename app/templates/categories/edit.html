@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+	</head>
+	<body>
+		<h1>Create new category</h1>
+		<form method="post">
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name" value="{{ name }}" required />
+			<br />
+			<label for="name">Description</label>
+			<input
+				type="text"
+				name="description"
+				id="description"
+				value="{{ description }}"
+				required
+			/>
+			<br />
+			<label for="name">Color</label>
+			<input
+				type="color"
+				name="color"
+				id="color"
+				value="{{ color }}"
+				required
+			/>
+			<br />
+
+			<button type="reset">Reset</button>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>

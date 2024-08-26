@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ title }}</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="title">{{ title }}</h1>
+			<p class="message">{{ message }}</p>
+			<ul>
+				<li>
+					<button onclick="window.location.href='{{ url_for('/.get_index') }}'">
+						Головна Сторінка
+					</button>
+				</li>
+				<li>
+					<button
+						onclick="window.location.href='{{ url_for('categories.create_category') }}'"
+					>
+						Додати категорію
+					</button>
+				</li>
+				<li>
+					<button
+						onclick="window.location.href='{{ url_for('spendings.get_spendings') }}'"
+					>
+						Переглянути витрати
+					</button>
+				</li>
+				<li>
+					<button
+						onclick="window.location.href='{{ url_for('spendings.create_spending') }}'"
+					>
+						Додати нову витрату
+					</button>
+				</li>
+				<li>
+					<button
+						onclick="window.location.href='{{ url_for('report.generate_report') }}'"
+					>
+						Переглянути звіт про витрати
+					</button>
+				</li>
+			</ul>
+
+			<h2>Categories</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Color</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for category in categories %}
+					<tr style="background-color:{{ category.color }};">
+						<td>{{ category.name }}</td>
+						<td>{{ category.description }}</td>
+						<td>{{ category.color }}</td>
+						<td>
+							<button
+								onclick="window.location.href='{{ url_for('categories.edit_category', category_id=category.id) }}'"
+							>
+								Edit
+							</button>
+						</td>
+						<td>
+							<button
+								onclick="window.location.href='{{ url_for('categories.delete_category', category_id=category.id) }}'"
+							>
+								Delete
+							</button>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

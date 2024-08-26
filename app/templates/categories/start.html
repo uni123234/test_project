@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ title }}</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="title">{{ title }}</h1>
+			<p class="message">{{ message }}</p>
+
+			<div class="options">
+				<h2>Опції:</h2>
+				<ul>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('categories.get_categories') }}'"
+						>
+							Переглянути категорії
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('categories.create_category') }}'"
+						>
+							Додати категорію
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('spendings.get_spendings') }}'"
+						>
+							Переглянути витрати
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('spendings.create_spending') }}'"
+						>
+							Додати нову витрату
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('report.generate_report') }}'"
+						>
+							Переглянути звіт про витрати
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

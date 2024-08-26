@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Список витрат</title>
+	</head>
+	<body>
+		<button onclick="window.location.href='{{ url_for('/.get_index') }}'">
+			Головна Сторінка
+		</button>
+		<button
+			onclick="window.location.href='{{ url_for('categories.get_categories') }}'"
+		>
+			Переглянути категорії
+		</button>
+		<button
+			onclick="window.location.href='{{ url_for('categories.create_category') }}'"
+		>
+			Додати категорію
+		</button>
+		<button
+			onclick="window.location.href='{{ url_for('spendings.create_spending') }}'"
+		>
+			Додати нову витрату
+		</button>
+		<button
+			onclick="window.location.href='{{ url_for('report.generate_report') }}'"
+		>
+			Переглянути звіт про витрати
+		</button>
+		<h1>Список витрат</h1>
+		<table border="1">
+			<tr>
+				<th>Назва</th>
+				<th>Сума</th>
+				<th>Категорія</th>
+				<th>Дата</th>
+				<th>Зарплата/Витрата</th>
+				<th>Дії</th>
+			</tr>
+			{% for spending in spendings %}
+			<tr>
+				<td>{{ spending['name'] }}</td>
+				<td>{{ spending['amount'] }}</td>
+				<td>{{ spending['category'] }}</td>
+				<td>{{ spending['date'] }}</td>
+				<td>{{ 'Зарплата' if not spending['is_spending'] else 'Витрата' }}</td>
+				<td>
+					<button
+						onclick="window.location.href='{{ url_for('spendings.edit_spending', spending_id=spending['id']) }}'"
+					>
+						Редагувати
+					</button>
+					<button
+						onclick="window.location.href='{{ url_for('spendings.delete_spending', spending_id=spending['id']) }}'"
+					>
+						Видалити
+					</button>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

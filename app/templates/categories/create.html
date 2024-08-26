@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<button
+					onclick="window.location.href='{{ url_for('categories.get_categories') }}'"
+				>
+					Головна Сторінка
+				</button>
+			</li>
+			<li>
+				<button
+					onclick="window.location.href='{{ url_for('categories.get_categories') }}'"
+				>
+					Переглянути категорії
+				</button>
+			</li>
+			<li>
+				<button
+					onclick="window.location.href='{{ url_for('spendings.get_spendings') }}'"
+				>
+					Переглянути витрати
+				</button>
+			</li>
+			<li>
+				<button
+					onclick="window.location.href='{{ url_for('spendings.create_spending') }}'"
+				>
+					Додати нову витрату
+				</button>
+			</li>
+			<li>
+				<button
+					onclick="window.location.href='{{ url_for('report.generate_report') }}'"
+				>
+					Переглянути звіт про витрати
+				</button>
+			</li>
+		</ul>
+
+		<h1>Create new category</h1>
+		<form method="post">
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name" required /> <br />
+			<label for="description">Description</label>
+			<input type="text" name="description" id="description" required /> <br />
+			<label for="color">Color</label>
+			<input type="color" name="color" id="color" value="#FFFFFF" required />
+			<br />
+
+			<button type="reset">Reset</button>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>

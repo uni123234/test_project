@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ title }}</title>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='report/report.css') }}"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="title">{{ title }}</h1>
+			<p class="content">{{ content }}</p>
+
+			<div class="options">
+				<h2>Опції:</h2>
+				<ul>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('categories.get_categories') }}'"
+						>
+							Переглянути категорії
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('categories.create_category') }}'"
+						>
+							Додати категорію
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('spendings.get_spendings') }}'"
+						>
+							Переглянути витрати
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('spendings.create_spending') }}'"
+						>
+							Додати нову витрату
+						</button>
+					</li>
+					<li>
+						<button
+							onclick="window.location.href='{{ url_for('/.get_index') }}'"
+						>
+							Головна Сторінка
+						</button>
+					</li>
+				</ul>
+			</div>
+
+			<form action="{{ url_for('report.generate_report') }}" method="post">
+				<label for="start_date">Початкова дата:</label>
+				<input type="date" name="start_date" required />
+
+				<label for="end_date">Кінцева дата:</label>
+				<input type="date" name="end_date" required />
+
+				<button type="submit">Згенерувати звіт</button>
+			</form>
+
+			{% if spendings %}
+			<table>
+				<thead>
+					<tr>
+						<th>Ім'я</th>
+						<th>Ціна</th>
+						<th>Дата</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for spending in spendings %}
+					<tr>
+						<td>{{ spending.name }}</td>
+						<td>{{ spending.amount }}</td>
+						<td>{{ spending.date }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<p>Немає даних за вибраний період</p>
+			{% endif %}
+		</div>
+	</body>
+</html>

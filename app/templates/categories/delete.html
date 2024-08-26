@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+	</head>
+	<body>
+		<h1>Do you want to delete such category "{{ name }}"?</h1>
+		<form method="post">
+			<button>
+				<a href="{{ url_for('categories.get_categories') }}">No</a>
+			</button>
+			<button type="submit">Yes</button>
+		</form>
+	</body>
+</html>
